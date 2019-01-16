@@ -1,6 +1,6 @@
 {
   "name": "ng-auto-moq",
-  "version": "1.0.0",
+  "version": "1.0.1-rc.0",
   "author": "dvabuzyarov(at)gmail.com",
   "license": "MIT",
   "description": "Unit tests reflector that automatically mocks dependencies with moq.ts for angular units",
