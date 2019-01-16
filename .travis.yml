@@ -1,0 +1,26 @@
+language: node_js
+node_js:
+- stable
+sudo: false
+cache:
+  directories:
+  - node_modules
+git:
+  depth: 1
+install:
+- npm install
+script:
+- npm run lint
+- npm run test
+- npm run build
+before_deploy:
+- cd dist/ng-auto-moq
+deploy:
+  skip_cleanup: true
+  provider: npm
+  email: dvabuzyarov@gmail.com
+  api_key:
+    secure: G4NUdut+Ox3lWQg6FL8u33iWr0p3H/Lk+WW0R5OEp3xODFxi9H4H7x14qT4XyM2aRWWze+aL/+KsgygvCgy5YJPhgrkve4mEzDhZsUMMnNC1z8M+uFPKrQCZo8lCQODA5cMN7shSTTCCIlOjK6jjRkUYqVoMtwK/dl2XqNt6ONR+wX+CcuYsRdQvdyzUQyT6w7DI4Tj2Z3s5H79rmJLbeihWPZcDi0M7CcOAmocXZXimTniWVP/JJWt5OeS1BUD67TFM+yQuY2GZKkz3DTa/gfVWyAht888NpgHAUOfsKsIIyHHZDCJQvwr8V8fg5I1pAFVVe3pu3EjGUvY43wut1/jje6uORwXTBQreq7chjd2tVoO/AFMS5ZRZCOPxoFgiLZgpuyS6HON+WFKtJRqpxScHjBS8NES2ylqKA+CIQRAnqV31tIHvHOkToqrPZAosSWmY+cNin48zbxrWOMnp3Gf86rIU1ymgTUS63NrTiTz5h44fv+PQWFt4Wl5IGo4Qs5/yMF4oce7jNQLXOkMf8e9/R/OibPyO2C+rqkaYMzTpfAKAcn04XZQ9E3AH5LrChgiJ5+TJQ008QQ/T2f00ZTqBp3bxhnfwlvjZE6PxfYrpWbeGtxxvYjNBnlE+MzGU7kyDm7AWC+kuPWQx5E/nP4BtALrJhJSC4xDDhhTFzX8=
+  on:
+    tags: true
+    repo: dvabuzyarov/ng-auto-moq

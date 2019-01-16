@@ -1,0 +1,40 @@
+{
+  "name": "workspace",
+  "version": "1.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build ng-auto-moq",
+    "build-tests": "tsc -p ./projects/ng-auto-moq/tsconfig.spec.json ",
+    "test": "npm run build-tests && node ./out-tsc/**/index.specs.js",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "preversion": "npm run lint && npm run test",
+    "version": "cd ./projects/ng-auto-moq && npm version $npm_package_version && git add package.json"
+  },
+  "private": true,
+  "devDependencies": {
+    "moq.ts": "^2.7.3",
+    "@angular-devkit/build-angular": "~0.11.0",
+    "@angular-devkit/build-ng-packagr": "~0.11.0",
+    "@angular/common": "~7.1.0",
+    "@angular/core": "~7.1.0",
+    "@angular/cli": "~7.1.4",
+    "@angular/compiler": "^7.2.0",
+    "@angular/compiler-cli": "~7.1.0",
+    "@angular/language-service": "~7.1.0",
+    "@types/node": "~8.9.4",
+    "ng-packagr": "^4.2.0",
+    "ts-node": "~7.0.0",
+    "tsickle": ">=0.29.0",
+    "tslib": "^1.9.0",
+    "tslint": "~5.11.0",
+    "typescript": "~3.1.6",
+    "@types/jasmine": "~2.8.8",
+    "@types/jasminewd2": "~2.0.3",
+    "jasmine": "3.2.0",
+    "jasmine-core": "3.2.0",
+    "jasmine-marbles": "0.4.0",
+    "jasmine-spec-reporter": "4.2.1"
+  }
+}

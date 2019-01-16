@@ -1,0 +1,33 @@
+{
+  "name": "ng-auto-moq",
+  "version": "1.0.0",
+  "author": "dvabuzyarov(at)gmail.com",
+  "license": "MIT",
+  "description": "Unit tests reflector that automatically mocks dependencies with moq.ts for angular units",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dvabuzyarov/ng-auto-moq"
+  },
+  "keywords": [
+    "angular",
+    "injector",
+    "moq.ts",
+    "auto",
+    "test"
+  ],
+  "homepage": "https://github.com/dvabuzyarov/ng-auto-moq#readme",
+  "bugs": {
+    "url": "https://github.com/dvabuzyarov/ng-auto-moq/issues"
+  },
+  "peerDependencies": {
+    "@angular/core": "^7.1.0",
+    "reflect-metadata": "^0.1.12",
+    "moq.ts": "^2.7.3"
+  },
+  "devDependencies": {
+    "jasmine": "^3.3.1"
+  }
+}
