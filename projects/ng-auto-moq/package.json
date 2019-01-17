@@ -5,7 +5,8 @@
   "license": "MIT",
   "description": "Unit tests reflector that automatically mocks dependencies with moq.ts for angular units",
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "tag": "next"
   },
   "repository": {
     "type": "git",

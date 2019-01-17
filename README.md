@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/dvabuzyarov/ng-auto-moq.svg?branch=master)](https://travis-ci.org/dvabuzyarov/ng-auto-moq)
-[![NPM version](http://img.shields.io/npm/v/ng-auto-moq.svg?style=flat-square)](https://www.npmjs.com/package/ng-auto-moq)
+[![NPM version:latest](https://img.shields.io/npm/v/ng-auto-moq/latest.svg?style=flat-square)](https://www.npmjs.com/package/ng-auto-moq)
+[![NPM version:next](https://img.shields.io/npm/v/ng-auto-moq/next.svg?style=flat-square)](https://www.npmjs.com/package/ng-auto-moq)
 [![npm downloads](https://img.shields.io/npm/dt/ng-auto-moq.svg?style=flat-square)](https://www.npmjs.com/package/ng-auto-moq)
 [![Dependency Status](http://img.shields.io/david/dvabuzyarov/ng-auto-moq.svg?style=flat-square)](https://david-dm.org/dvabuzyarov/ng-auto-moq)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
