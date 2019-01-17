@@ -2,7 +2,11 @@
 [![NPM version](http://img.shields.io/npm/v/ng-auto-moq.svg?style=flat-square)](https://www.npmjs.com/package/ng-auto-moq)
 [![npm downloads](https://img.shields.io/npm/dt/ng-auto-moq.svg?style=flat-square)](https://www.npmjs.com/package/ng-auto-moq)
 [![Dependency Status](http://img.shields.io/david/dvabuzyarov/ng-auto-moq.svg?style=flat-square)](https://david-dm.org/dvabuzyarov/ng-auto-moq)
-[![License](	https://img.shields.io/npm/l/ng-auto-moq.svg)](https://www.npmjs.com/package/ng-auto-moq)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+[![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com/)
+[![npm bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/ng-auto-moq.svg)](https://www.npmjs.com/package/ng-auto-moq)
+[![License](https://img.shields.io/npm/l/ng-auto-moq.svg)](https://www.npmjs.com/package/ng-auto-moq)
 
 This is a special angular injector builder for unit testing purposes. 
 It creates an injector configuration that automatically mocks all dependencies of tested unit with [moq.ts](https://github.com/dvabuzyarov/moq.ts).
