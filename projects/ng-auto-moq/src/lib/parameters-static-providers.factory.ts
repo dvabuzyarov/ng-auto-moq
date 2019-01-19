@@ -5,8 +5,8 @@ import { mockFactory} from "./mock-factory";
 
 export function* parametersStaticProviders<T>(
     parameters: IParameter [],
-    _providerResolver: ProviderResolver<T> = providerResolver,
-    _mockFactory: MockFactory<T> = mockFactory): IterableIterator<StaticProvider> {
+    _providerResolver: ProviderResolver = providerResolver,
+    _mockFactory: MockFactory = mockFactory): IterableIterator<StaticProvider> {
 
     for (const parameter of parameters) {
         const mock = _mockFactory(parameter.displayName, mockFactory);

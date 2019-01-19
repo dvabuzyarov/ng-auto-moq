@@ -17,7 +17,7 @@ It can be used with angular [TestBed](https://angular.io/api/core/testing/TestBe
 Here is adapted test configuration example from [the official angular documentation.](https://angular.io/guide/testing#service-tests)
 ```typescript
 import "reflect-metadata";
-import { moqInjectorProviders, IMockedObject } from "ng-auto-moq";
+import { moqInjectorProviders, IMockedObject, resolveMock } from "ng-auto-moq";
 
 @Injectable()
 export class MasterService {
@@ -46,6 +46,12 @@ beforeEach(() => {
   (valueServiceMocked as IMockedObject<ValueService>).__mock
   .setup(instance => instance.getValue())
   .returns(-1);
+  
+  //or
+  
+  resolveMock<ValueService>(ValueService, TestBed.get(Injector)) 
+    .setup(instance => instance.getValue())
+    .returns(-1);
 });
 ```
 

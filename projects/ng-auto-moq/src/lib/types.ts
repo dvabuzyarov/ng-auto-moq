@@ -5,16 +5,16 @@ export interface IMockedObject<T> {
     __mock: IMock<T>;
 }
 
-export type MockFactory<T> = (displayName: string, defaultMockFactory: MockFactory<T>) => IMock<T & IMockedObject<T>>;
+export type MockFactory = (displayName: string, defaultMockFactory: MockFactory) => IMock<any & IMockedObject<any>>;
 
-export type ProviderResolver<T> = (parameter: IParameter, mocked: T, defaultProviderResolver: ProviderResolver<T>) => StaticProvider;
+export type ProviderResolver = (parameter: IParameter, mocked: any, defaultProviderResolver: ProviderResolver) => StaticProvider;
 
 export interface IOptions<T> {
-    providerResolver?: ProviderResolver<T>;
-    mockFactory?: MockFactory<T>;
+    providerResolver?: ProviderResolver;
+    mockFactory?: MockFactory;
 }
 
-export type MoqInjectorProviders = <T>(type: Type<T>, options?: IOptions<T>) => StaticProvider[];
+export type MoqInjectorProviders = <T>(type: Type<T>, options?: IOptions<any>) => StaticProvider[];
 
 export const enum Visibility {
     None,

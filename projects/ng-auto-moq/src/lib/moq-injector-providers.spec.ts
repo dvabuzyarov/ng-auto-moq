@@ -31,7 +31,7 @@ describe("Moq injector providers", () => {
         dependencyMock.setup(instance => instance.__mock)
             .returns(dependencyMock);
 
-        const mockFactory = new Mock<MockFactory<Dependency>>()
+        const mockFactory = new Mock<MockFactory>()
             .setup(instance => instance(Dependency.name, It.IsAny()))
             .returns(dependencyMock)
             .object();
