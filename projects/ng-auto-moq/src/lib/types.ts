@@ -12,6 +12,11 @@ export type ProviderResolver = (parameter: IParameter, mocked: any, defaultProvi
 export interface IOptions<T> {
     providerResolver?: ProviderResolver;
     mockFactory?: MockFactory;
+    /**
+     * When true the static provider for the tested unit will be skipped.
+     * Only providers for the moq dependencies will be returned.
+     */
+    skipSelf?: boolean;
 }
 
 export type MoqInjectorProviders = <T>(type: Type<T>, options?: IOptions<any>) => StaticProvider[];

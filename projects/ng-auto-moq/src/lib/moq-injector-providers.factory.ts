@@ -12,6 +12,6 @@ export function moqInjectorProvidersFactory(
         const parameters = _reflector(type);
         const provider = _typeStaticProvider(type, parameters.map(param => param.token));
         const providers = Array.from(_parametersStaticProviders(parameters, options.providerResolver, options.mockFactory));
-        return [provider, ...providers];
+        return options.skipSelf ? providers : [provider, ...providers];
     };
 }
