@@ -18,6 +18,16 @@ describe("Moq injector providers", () => {
         expect(actual).toEqual([{provide: EmptyResolvable, useClass: EmptyResolvable, deps: []}]);
     });
 
+    it("Returns empty array for a component without dependencies when skipSelf option is true", () => {
+
+        @Injectable()
+        class EmptyResolvable {
+        }
+
+        const actual = moqInjectorProviders(EmptyResolvable, {skipSelf: true});
+        expect(actual).toEqual([]);
+    });
+
     it("Returns static providers for the tested unit and its dependencies", () => {
 
         @Injectable()
