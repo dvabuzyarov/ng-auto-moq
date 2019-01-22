@@ -5,7 +5,7 @@ export interface IMockedObject<T> {
     __mock: IMock<T>;
 }
 
-export type MockFactory = (displayName: string, defaultMockFactory: MockFactory) => IMock<any & IMockedObject<any>>;
+export type MockFactory = (parameter: IParameter, defaultMockFactory: MockFactory) => IMock<any & IMockedObject<any>>;
 
 export type ProviderResolver = (parameter: IParameter, mocked: any, defaultProviderResolver: ProviderResolver) => StaticProvider;
 
