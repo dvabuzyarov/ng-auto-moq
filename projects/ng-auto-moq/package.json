@@ -3,6 +3,7 @@
   "version": "0.0.0-semantically-released",
   "author": "dvabuzyarov(at)gmail.com",
   "license": "MIT",
+  "readme": "README.md",
   "description": "Unit tests reflector that automatically mocks dependencies with moq.ts for angular units",
   "publishConfig": {
     "access": "public",
