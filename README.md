@@ -94,7 +94,7 @@ the dependency is available and when it isn't.
 
 ```typescript
 import "reflect-metadata";
-import { moqInjectorProviders, IMockedObject, resolveMock, IParameter, ProviderResolver } from "ng-auto-moq";
+import { moqInjectorProviders, DefaultProviderResolver, IParameter, ProviderResolver } from "ng-auto-moq";
 
 @Injectable()
 export class MasterService {
@@ -104,14 +104,14 @@ export class MasterService {
 
 it("Returns provided value when optional dependencies are not available", ()=>{
     // setup section
-    const providerResolver = (parameter: IParameter, mocked: Type<any>, defaultProviderResolver: ProviderResolver<any>)=>{
+    const providerResolver: ProviderResolver = (parameter: IParameter, mocked: Type<any>, defaultProviderResolver: DefaultProviderResolver)=>{
         if (parameter.optional === true){
             return undefined;
         }
         return defaultProviderResolver(parameter, mocked);
     };
     
-    const injector = Injector.create(moqInjectorProviders(MasterService, {}));
+    const injector = Injector.create(moqInjectorProviders(MasterService, { providerResolver }));
     
     //action section
     const tested = injector.get(MasterService);
@@ -128,14 +128,14 @@ decide to throw an exception when interaction with the mocked object is not expe
 
 ```typescript
 import "reflect-metadata";
-import { moqInjectorProviders, MockFactory, resolveMock } from "ng-auto-moq";
+import { moqInjectorProviders, MockFactory, DefaultMockFactory, IParameter } from "ng-auto-moq";
 import { It } from "moq.ts";
 
 let injector: Injector;
 
 beforeEach(() => {
-    const mockFactory = (displayName: string, defaultMockFactory: MockFactory<any>) =>{
-        const mock = defaultMockFactory(displayName);
+    const mockFactory: MockFactory = (parameter: IParameter, defaultMockFactory: MockFactory<any>) =>{
+        const mock = defaultMockFactory(parameter);
         mock
         .setup(instance => It.Is(expression => true))
         .throws(new Error("setup is missed"));

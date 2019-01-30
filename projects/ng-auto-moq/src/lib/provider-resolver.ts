@@ -1,6 +1,8 @@
 import { IParameter } from "./types";
 import { StaticProvider } from "@angular/core";
 
-export function providerResolver<T>(parameter: IParameter, mocked: T): StaticProvider | undefined {
+export type DefaultProviderResolver = typeof providerResolver;
+
+export function providerResolver(parameter: IParameter, mocked: any): StaticProvider | undefined {
     return {provide: parameter.token, useValue: mocked};
 }

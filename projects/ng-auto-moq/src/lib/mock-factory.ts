@@ -1,8 +1,10 @@
 import { IMock, Mock } from "moq.ts";
 import { IMockedObject, IParameter } from "./types";
 
-export function mockFactory<T>(parameter: IParameter): IMock<T & IMockedObject<T>> {
-    const mock = new Mock<T & IMockedObject<T>>(parameter.displayName);
+export type DefaultMockFactory = typeof mockFactory;
+
+export function mockFactory(parameter: IParameter): IMock<any & IMockedObject<any>> {
+    const mock = new Mock<any & IMockedObject<any>>(parameter.displayName);
     mock.setup(instance => instance.__mock).returns(mock);
     return mock;
 }
