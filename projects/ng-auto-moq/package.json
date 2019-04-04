@@ -29,6 +29,6 @@
     "moq.ts": "^2.7.3"
   },
   "devDependencies": {
-    "jasmine": "3.3.1"
+    "jasmine": "3.4.0"
   }
 }
