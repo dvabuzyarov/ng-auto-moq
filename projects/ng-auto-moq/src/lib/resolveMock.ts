@@ -8,7 +8,7 @@ import { IMockedObject } from "./types";
  * @param token angular token
  * @param injector angular injector
  */
-export function resolveMock<T>(token: Type<T> | InjectionToken<T> | T, injector: Injector): IMock<T> {
+export function resolveMock<T>(token: Type<T> | InjectionToken<T>, injector: Injector): IMock<T> {
     const object = injector.get(token) as unknown;
     return (object as IMockedObject<T>).__mock;
 }
