@@ -36,7 +36,7 @@
     "jasmine-spec-reporter": "4.2.1",
     "moq.ts": "2.8.5",
     "ng-packagr": "5.3.0",
-    "semantic-release": "15.13.16",
+    "semantic-release": "15.13.17",
     "ts-node": "8.3.0",
     "tsickle": "0.35.0",
     "tslib": "1.10.0",
