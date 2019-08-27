@@ -41,7 +41,7 @@
     "tsickle": "0.37.0",
     "tslib": "1.10.0",
     "tslint": "5.19.0",
-    "typescript": "3.2.4"
+    "typescript": "3.5.3"
   },
   "release": {
     "pkgRoot": "dist/ng-auto-moq"
