@@ -26,7 +26,7 @@
   "peerDependencies": {
     "@angular/core": "^7.1.0",
     "reflect-metadata": "^0.1.12",
-    "moq.ts": "^2.7.3 || ^3.0.0"
+    "moq.ts": "^3.0.0"
   },
   "devDependencies": {
     "jasmine": "3.4.0"
