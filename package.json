@@ -33,7 +33,7 @@
     "rxjs": "6.5.3",
     "zone.js": "0.10.2",
     "cz-conventional-changelog": "3.0.2",
-    "husky": "3.0.5",
+    "husky": "3.0.6",
     "jasmine": "3.5.0",
     "jasmine-core": "3.5.0",
     "jasmine-spec-reporter": "4.2.1",
