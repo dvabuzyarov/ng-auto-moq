@@ -66,26 +66,51 @@ jasmine *.spec.js
 ```typescript
 import "reflect-metadata";
 import { moqInjectorProviders, IMockedObject, resolveMock } from "ng-auto-moq";
+import {It} from "moq.ts";
+import { Injectable, Injector } from "@angular/core";
 
-let injector: Injector;
+@Injectable()
+export class ValueService {
+    getValue(options: { value: number }) {
+        return options.value * 10;
+    }
+}
 
-beforeEach(() => {
-    injector = Injector.create(moqInjectorProviders(MasterService));
+@Injectable()
+export class MasterService {
+    constructor(private valueService: ValueService) {
+    }
+
+    getValue(value: number) {
+        return this.valueService.getValue({value});
+    }
+}
+
+describe("Integration test", () => {
+    let injector: Injector;
+
+    beforeEach(() => {
+        const providers = moqInjectorProviders(MasterService);
+        injector = Injector.create({providers});
+    });
+
+    it("Returns provided value", () => {
+        // setup section
+        resolveMock(ValueService, injector)
+            // the options object should be compared with deep equal logic or any other custom logic
+            // the default comparision would not work since for objects it uses reference comparing
+            .setup(instance => instance.getValue(It.Is(opt => expect(opt).toEqual({value: 1}))))
+            .returns(-1);
+
+        //action section
+        const tested = injector.get(MasterService);
+        const actual = tested.getValue(1);
+
+        //assertion section
+        expect(actual).toBe(-1);
+    });
 });
 
-it("Returns provided value", ()=>{
-    // setup section
-    resolveMock<ValueService>(ValueService, injector)
-      .setup(instance => instance.getValue())
-      .returns(-1);
-    
-    //action section
-    const tested = injector.get(MasterService);
-    const actual = tested.getValue();
-    
-    //assertion section
-    expect(actual).toBe(-1);
-})
 ```
 
 With options of moqInjectorProviders you can control how dependencies are configured. 
