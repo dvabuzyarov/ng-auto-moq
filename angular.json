@@ -39,5 +39,8 @@
       }
     }
   },
-  "defaultProject": "ng-auto-moq"
+  "defaultProject": "ng-auto-moq",
+  "cli": {
+    "analytics": false
+  }
 }
