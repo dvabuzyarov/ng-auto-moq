@@ -15,7 +15,12 @@
             "tsConfig": "projects/ng-auto-moq/tsconfig.lib.json",
             "project": "projects/ng-auto-moq/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/ng-auto-moq/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
