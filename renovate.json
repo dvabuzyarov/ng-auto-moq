@@ -8,5 +8,8 @@
   },
   "devDependencies": {
     "automerge": true
-  }
+  },
+  "baseBranches": [
+    "dev"
+  ]
 }
