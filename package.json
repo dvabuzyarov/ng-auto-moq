@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build ng-auto-moq && cpx README.md ./dist/ng-auto-moq/",
+    "build": "ng build ng-auto-moq --prod && cpx README.md ./dist/ng-auto-moq/",
     "build-tests": "tsc -p ./projects/ng-auto-moq/tsconfig.spec.json ",
     "test": "npm run build-tests && node ./out-tsc/**/index.specs.js",
     "lint": "ng lint",
