@@ -28,7 +28,7 @@
     "@types/jasmine": "3.5.10",
     "@types/jasminewd2": "2.0.8",
     "@types/node": "12.12.31",
-    "codelyzer": "5.2.1",
+    "codelyzer": "5.2.2",
     "cpx": "1.5.0",
     "rxjs": "6.5.4",
     "zone.js": "0.10.3",
