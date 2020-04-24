@@ -1,15 +1,22 @@
-import { InjectionToken, StaticProvider, Type } from "@angular/core";
+import {
+    ConstructorProvider,
+    ExistingProvider,
+    FactoryProvider,
+    InjectionToken,
+    StaticClassProvider,
+    StaticProvider,
+    Type,
+    ValueProvider
+} from "@angular/core";
 import { IMock } from "moq.ts";
 import { DefaultMockFactory } from "./mock-factory";
 import { DefaultProviderResolver } from "./provider-resolver";
 
-export interface IMockedObject<T> {
-    __mock: IMock<T>;
-}
+export type MockFactory = (parameter: IParameter, defaultMockFactory: DefaultMockFactory) => IMock<any>;
 
-export type MockFactory = (parameter: IParameter, defaultMockFactory: DefaultMockFactory) => IMock<any & IMockedObject<any>>;
+export declare type OnlyStaticProvider = ValueProvider | ExistingProvider | StaticClassProvider | ConstructorProvider | FactoryProvider;
 
-export type ProviderResolver = (parameter: IParameter, mocked: any, defaultProviderResolver: DefaultProviderResolver) => StaticProvider;
+export type ProviderResolver = (parameter: IParameter, mocked: any, defaultProviderResolver: DefaultProviderResolver) => OnlyStaticProvider;
 
 export interface IOptions<T> {
     providerResolver?: ProviderResolver;

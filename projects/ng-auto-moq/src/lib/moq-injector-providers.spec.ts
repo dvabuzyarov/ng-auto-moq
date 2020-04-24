@@ -1,7 +1,7 @@
 import { Injectable, ValueProvider } from "@angular/core";
-import { It, Mock } from "moq.ts";
+import { It, Mock, MoqAPI } from "moq.ts";
 import { moqInjectorProviders } from "./moq-injector-providers";
-import { IMockedObject, IParameter, MockFactory } from "./types";
+import { IParameter, MockFactory } from "./types";
 
 @Injectable()
 class Dependency {
@@ -37,9 +37,7 @@ describe("Moq injector providers", () => {
             }
         }
 
-        const dependencyMock = new Mock<Dependency & IMockedObject<Dependency>>();
-        dependencyMock.setup(instance => instance.__mock)
-            .returns(dependencyMock);
+        const dependencyMock = new Mock<Dependency>();
 
         const mockFactory = new Mock<MockFactory>()
             .setup(instance => instance(It.Is<IParameter>(param => param.displayName === Dependency.name), It.IsAny()))
@@ -67,7 +65,7 @@ describe("Moq injector providers", () => {
 
         const dependencyProvider = actual.find(provider => provider.provide === Dependency);
         expect(dependencyProvider).toBeDefined();
-        const mockedDependency = (dependencyProvider.useValue as IMockedObject<Dependency>).__mock;
+        const mockedDependency = (dependencyProvider.useValue)[MoqAPI];
         expect(mockedDependency.name).toEqual(Dependency.name);
     });
 });

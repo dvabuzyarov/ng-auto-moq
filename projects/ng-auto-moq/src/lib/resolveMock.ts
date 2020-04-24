@@ -1,6 +1,5 @@
 import { InjectionToken, Injector, Type } from "@angular/core";
-import { IMock } from "moq.ts";
-import { IMockedObject } from "./types";
+import { IMock, MoqAPI } from "moq.ts";
 
 /**
  * Gets an instance of IMock interface for mocked object according to provided token.
@@ -10,5 +9,5 @@ import { IMockedObject } from "./types";
  */
 export function resolveMock<T>(token: Type<T> | InjectionToken<T>, injector: Injector): IMock<T> {
     const object = injector.get(token) as unknown;
-    return (object as IMockedObject<T>).__mock;
+    return object[MoqAPI] as IMock<T>;
 }

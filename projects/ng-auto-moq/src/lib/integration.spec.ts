@@ -1,8 +1,10 @@
 import "reflect-metadata";
-import { Injectable, Injector } from "@angular/core";
+import { Injectable, Injector, Optional, Type } from "@angular/core";
 import { moqInjectorProviders } from "./moq-injector-providers";
 import { resolveMock } from "./resolveMock";
 import { It } from "moq.ts";
+import { IParameter } from "./types";
+import { DefaultProviderResolver } from "./provider-resolver";
 
 @Injectable()
 export class ValueService {
@@ -21,15 +23,21 @@ export class MasterService {
     }
 }
 
+@Injectable()
+export class MasterServiceWithOptionalDependency {
+    constructor(@Optional() private valueService: ValueService) {
+    }
+
+    getValue(value: number) {
+        return this.valueService === undefined ? -1000 : value;
+    }
+}
+
 describe("Integration test", () => {
-    let injector: Injector;
-
-    beforeEach(() => {
-        const providers = moqInjectorProviders(MasterService);
-        injector = Injector.create({providers});
-    });
-
     it("Returns provided value", () => {
+        const providers = moqInjectorProviders(MasterService);
+        const injector = Injector.create({providers});
+
         // setup section
         resolveMock(ValueService, injector)
             // the options object should be compared with deep equal logic or any other custom logic
@@ -43,5 +51,25 @@ describe("Integration test", () => {
 
         // assertion section
         expect(actual).toBe(-1);
+    });
+
+    it("Returns provided value with ignored optional", () => {
+        // setup section
+        const providerResolver = (parameter: IParameter, mocked: Type<any>, defaultProviderResolver: DefaultProviderResolver) => {
+            if (parameter.optional === true) {
+                return undefined;
+            }
+            return defaultProviderResolver(parameter, mocked);
+        };
+
+        const providers = moqInjectorProviders(MasterServiceWithOptionalDependency, {providerResolver});
+        const injector = Injector.create({providers});
+
+        // action section
+        const tested = injector.get(MasterServiceWithOptionalDependency);
+        const actual = tested.getValue(1);
+
+        // assertion section
+        expect(actual).toBe(-1000);
     });
 });

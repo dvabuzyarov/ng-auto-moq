@@ -1,12 +1,11 @@
-import { StaticProvider } from "@angular/core";
-import { IParameter, MockFactory, ProviderResolver } from "./types";
+import { IParameter, MockFactory, OnlyStaticProvider, ProviderResolver } from "./types";
 import { providerResolver } from "./provider-resolver";
 import { mockFactory } from "./mock-factory";
 
 export function* parametersStaticProviders<T>(
     parameters: IParameter [],
     _providerResolver: ProviderResolver = providerResolver,
-    _mockFactory: MockFactory = mockFactory): IterableIterator<StaticProvider> {
+    _mockFactory: MockFactory = mockFactory): IterableIterator<OnlyStaticProvider> {
 
     for (const parameter of parameters) {
         const mock = _mockFactory(parameter, mockFactory);

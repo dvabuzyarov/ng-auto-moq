@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-#  - stable
+  #  - stable
   - "12"
 sudo: false
 git:
@@ -14,12 +14,17 @@ script:
   - npm run lint
   - npm run test
   - npm run build
-after_success:
-  - npm run semantic-release
+
+deploy:
+  provider: script
+  skip_cleanup: true
+  script:
+    - npx semantic-release
+  on:
+    tags: false
+    all_branches: true
+
 env:
   global:
     - secure: C6AvnoZQuRhkBV/DqsYY9R6E8wN9eZx9kNWhqklEiDAMRrg+zb3x3Z8bI2ygs8yZFY2s7K4VUg9IWxlEectDi6p4myhKOiPTutavhyQ2iyN6VuNjOPcF2Gx+djFDtTNQ7a3JzRWqfqbCvc6So0rXQ+8+/XvijfCyv21TmPmJzR2i1G3VbVubzjcF6hpDBiWMnJzSN+XmepFPTvLxptrM7tXM38UfdXRbyRbr7JZ21HzmsLkv1NS42mVdvp5yFVQ17j0KeJsCrJoKc5zCHWU+yj/ygmwqANd9/BqbPg2iyDiGwmAhgiy/kuyEmMMR3FGtoXhsI7X0vELCmTjJdKYxf8U0snT8JQ4K8jcXFbfRKP2Fh5cIQu8yUGQTalw93sMXtJ/kPz39yKNTcslh14m1iW8WBjSS+cAftr2RG4SCgMGha1SF87cRKg76G/7CJzljtPIAqf3zSIksTHTIpTr6gslQicwzRvlxf7psOnZW0y52S5uxp90PZVwMu0AxZn5tgg/a7tX9xhBCl67IDHTSD7Y6aDYvZRNHYqaeRQEBbc3p4YDTAe8bRXbOk+2JeAg702bXLl9eHUJmuVI/3N57zPQ9wPC4vKPIVZeyFcMVZDjxjFHaP4X2TIMawqOrpOhy2rOFFSLJbGfDFPXr4QCtV4Jbd9IdWQxHmGVmzYh/27s=
     - secure: Kb27fudCDrmj2Sa+7C47RnMklcmtPIAxyeF4z8ZA+28xew4GNYHWae0X3YAn+EIqphKAdeSQ+8D3On+0ZomCEYhGTBx3FlFcFa2fV2oWlkteMtucpSg5+2SiMGv6aKbmJDjJ9pxqe3PjdxXBCOIsMouJ/ZaXQIlhRNt+UUhZM3XVZR0591qYKmlau4MGdeBO6V0sIsi/Oesf7w9v71tuSabW71iH+dC/O+EtKtlfk+P2VkH7IzCpf5Ncvoed7LG1NLgvx/1Kw8+V95O2rgzdLZhLM9mM2SkZxgWv1lrXh4RHftyie7202x/x6vniVhHMBtXzWwY64n9oZ+r6x0EhEzzTNtHspHxBZnWeYHGOMl+4REje4nJ8FHryMd1LxxEX5hvpj/ho330rMUIUe9N9m7jsp5Q6kdfjfBI517NFXmfA/33amA+W0gX7JluepB2s6QS/aXlIuAinj3sUGyxIQE6m56mjAumEXv0YCy3xJ4UjVFWWlmZvNu4QEj4L4FCU66VVe39y1DKGI7z2t7Z/eYv+QO32ytCj88r3GwnJ1/Q7CHtaHe+/cojNePbHjvsDCHKjXTQltXeKTn50dbpDL/no7l660g3bFs9jgjkzl37JbqyY++wyrx7kKtFwPvXG7FLjri73wIK3C0sHNq2BygaLCsX4cYftF+bQt8iGXUU=
-branches:
-  except:
-    - "/^v\\d+\\.\\d+\\.\\d+$/"

@@ -10,8 +10,8 @@ export function moqInjectorProvidersFactory(
     _parametersStaticProviders: typeof parametersStaticProviders = parametersStaticProviders): MoqInjectorProviders {
     return <T>(type: Type<T>, options: IOptions<T> = {}): StaticProvider[] => {
         const parameters = _reflector(type);
-        const provider = _typeStaticProvider(type, parameters.map(param => param.token));
         const providers = Array.from(_parametersStaticProviders(parameters, options.providerResolver, options.mockFactory));
+        const provider = _typeStaticProvider(type, providers.map(p => p.provide));
         return options.skipSelf ? providers : [provider, ...providers];
     };
 }

@@ -17,7 +17,7 @@ It can be used with angular [TestBed](https://angular.io/api/core/testing/TestBe
 Here is adapted test configuration example from [the official angular documentation.](https://angular.io/guide/testing#service-tests)
 ```typescript
 import "reflect-metadata";
-import { moqInjectorProviders, IMockedObject, resolveMock } from "ng-auto-moq";
+import { moqInjectorProviders, IMockedObject, resolveMock } from "ng-auto-moq"; import { MoqAPI } from "moq.ts";
 
 @Injectable()
 export class MasterService {
@@ -31,7 +31,7 @@ export class ValueService {
 }
 
 let masterService: MasterService;
-let valueServiceMocked: ValueService;
+let valueService: ValueService;
 
 beforeEach(() => {
 
@@ -41,9 +41,9 @@ beforeEach(() => {
   });
   // Inject both the service-to-test and its (spy) dependency
   masterService = TestBed.get(MasterService);
-  valueServiceMocked = TestBed.get(ValueService);
+  valueService = TestBed.get(ValueService);
   
-  (valueServiceMocked as IMockedObject<ValueService>).__mock
+  (valueService[MoqAPI] as IMock<ValueService>)
   .setup(instance => instance.getValue())
   .returns(-1);
   
@@ -129,14 +129,15 @@ export class MasterService {
 
 it("Returns provided value when optional dependencies are not available", ()=>{
     // setup section
-    const providerResolver: ProviderResolver = (parameter: IParameter, mocked: Type<any>, defaultProviderResolver: DefaultProviderResolver)=>{
-        if (parameter.optional === true){
+    const providerResolver = (parameter: IParameter, mocked: Type<any>, defaultProviderResolver: DefaultProviderResolver) => {
+        if (parameter.optional === true) {
             return undefined;
         }
         return defaultProviderResolver(parameter, mocked);
     };
     
-    const injector = Injector.create(moqInjectorProviders(MasterService, { providerResolver }));
+    const providers = moqInjectorProviders(MasterService, {providerResolver});
+    const injector = Injector.create({providers});
     
     //action section
     const tested = injector.get(MasterService);
@@ -147,9 +148,8 @@ it("Returns provided value when optional dependencies are not available", ()=>{
 })
 ```
 
-Another option is mockFactory that allows to customize the dependency mocking process. By default the mocked
-dependencies are preconfigured with only one property: __mock that provide access to IMock interface. You can either
-decide to throw an exception when interaction with the mocked object is not expected.
+Another option is mockFactory that allows to customize the dependency mocking process. You can pre configure the mock 
+and decide to throw an exception when interaction with the mocked object is not expected.
 
 ```typescript
 import "reflect-metadata";
