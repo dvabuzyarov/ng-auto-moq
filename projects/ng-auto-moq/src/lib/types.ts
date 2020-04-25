@@ -1,18 +1,31 @@
-import { InjectionToken, StaticProvider, Type } from "@angular/core";
+import {
+    ConstructorProvider,
+    ExistingProvider,
+    FactoryProvider,
+    InjectionToken,
+    StaticClassProvider,
+    StaticProvider,
+    Type,
+    ValueProvider
+} from "@angular/core";
 import { IMock } from "moq.ts";
 import { DefaultMockFactory } from "./mock-factory";
-import { DefaultProviderResolver } from "./provider-resolver";
+import { DefaultProviderFactory } from "./provider-factory";
 
-export interface IMockedObject<T> {
-    __mock: IMock<T>;
-}
+export type MockFactory = (parameter: IParameter, defaultMockFactory: DefaultMockFactory) => IMock<any>;
 
-export type MockFactory = (parameter: IParameter, defaultMockFactory: DefaultMockFactory) => IMock<any & IMockedObject<any>>;
+export declare type OnlyStaticProvider = ValueProvider | ExistingProvider | StaticClassProvider | ConstructorProvider | FactoryProvider;
 
-export type ProviderResolver = (parameter: IParameter, mocked: any, defaultProviderResolver: DefaultProviderResolver) => StaticProvider;
+export type ProviderFactory = (parameter: IParameter, mocked: any, defaultProviderResolver: DefaultProviderFactory) => OnlyStaticProvider;
 
 export interface IOptions<T> {
-    providerResolver?: ProviderResolver;
+    /**
+     * Creates one of angular Provider for provided dependency and constructed mock
+     */
+    providerFactory?: ProviderFactory;
+    /**
+     * Constructs a mock object for provided dependency
+     */
     mockFactory?: MockFactory;
     /**
      * When true the static provider for the tested unit will be skipped.
@@ -33,7 +46,13 @@ export const enum Visibility {
  * Reflects a dependency metadata.
  */
 export interface IParameter {
+    /**
+     * Dependency token name
+     */
     displayName: string;
+    /**
+     * Dependency token
+     */
     token: Type<any> | InjectionToken<any>;
     /**
      * If marked with @Optional()
