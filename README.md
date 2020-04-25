@@ -17,7 +17,8 @@ It can be used with angular [TestBed](https://angular.io/api/core/testing/TestBe
 Here is adapted test configuration example from [the official angular documentation.](https://angular.io/guide/testing#service-tests)
 ```typescript
 import "reflect-metadata";
-import { moqInjectorProviders, IMockedObject, resolveMock } from "ng-auto-moq"; import { MoqAPI } from "moq.ts";
+import { moqInjectorProviders, resolveMock } from "ng-auto-moq"; 
+import { MoqAPI } from "moq.ts";
 
 @Injectable()
 export class MasterService {
@@ -65,7 +66,7 @@ jasmine *.spec.js
      
 ```typescript
 import "reflect-metadata";
-import { moqInjectorProviders, IMockedObject, resolveMock } from "ng-auto-moq";
+import { moqInjectorProviders, resolveMock } from "ng-auto-moq";
 import {It} from "moq.ts";
 import { Injectable, Injector } from "@angular/core";
 
@@ -119,7 +120,7 @@ the dependency is available and when it isn't.
 
 ```typescript
 import "reflect-metadata";
-import { moqInjectorProviders, DefaultProviderResolver, IParameter, ProviderResolver } from "ng-auto-moq";
+import { moqInjectorProviders, DefaultProviderFactory, IParameter, ProviderFactory } from "ng-auto-moq";
 
 @Injectable()
 export class MasterService {
@@ -129,14 +130,14 @@ export class MasterService {
 
 it("Returns provided value when optional dependencies are not available", ()=>{
     // setup section
-    const providerResolver = (parameter: IParameter, mocked: Type<any>, defaultProviderResolver: DefaultProviderResolver) => {
+    const providerFactory: ProviderFactory = (parameter: IParameter, mocked: Type<any>, defaultProviderFactory: DefaultProviderFactory) => {
         if (parameter.optional === true) {
             return undefined;
         }
-        return defaultProviderResolver(parameter, mocked);
+        return defaultProviderFactory(parameter, mocked);
     };
     
-    const providers = moqInjectorProviders(MasterService, {providerResolver});
+    const providers = moqInjectorProviders(MasterService, {providerFactory});
     const injector = Injector.create({providers});
     
     //action section
@@ -153,18 +154,16 @@ and decide to throw an exception when interaction with the mocked object is not 
 
 ```typescript
 import "reflect-metadata";
-import { moqInjectorProviders, MockFactory, DefaultMockFactory, IParameter } from "ng-auto-moq";
+import { moqInjectorProviders, MockFactory, IParameter, DefaultMockFactory } from "ng-auto-moq";
 import { It } from "moq.ts";
 
 let injector: Injector;
 
 beforeEach(() => {
-    const mockFactory: MockFactory = (parameter: IParameter, defaultMockFactory: MockFactory<any>) =>{
-        const mock = defaultMockFactory(parameter);
-        mock
-        .setup(instance => It.Is(expression => true))
+    const mockFactory: MockFactory = (parameter: IParameter, defaultMockFactory: DefaultMockFactory) =>{
+        return defaultMockFactory(parameter)
+        .setup(() => It.IsAny())
         .throws(new Error("setup is missed"));
-        return mock;
     };
     injector = Injector.create(moqInjectorProviders(MasterService, {mockFactory}));
 });
