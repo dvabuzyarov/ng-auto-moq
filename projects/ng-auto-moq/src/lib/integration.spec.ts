@@ -4,7 +4,7 @@ import { moqInjectorProviders } from "./moq-injector-providers";
 import { resolveMock } from "./resolveMock";
 import { It } from "moq.ts";
 import { IParameter } from "./types";
-import { DefaultProviderResolver } from "./provider-resolver";
+import { DefaultProviderFactory } from "./provider-factory";
 
 @Injectable()
 export class ValueService {
@@ -29,7 +29,7 @@ export class MasterServiceWithOptionalDependency {
     }
 
     getValue(value: number) {
-        return this.valueService === undefined ? -1000 : value;
+        return this.valueService === null ? -1000 : value;
     }
 }
 
@@ -55,14 +55,14 @@ describe("Integration test", () => {
 
     it("Returns provided value with ignored optional", () => {
         // setup section
-        const providerResolver = (parameter: IParameter, mocked: Type<any>, defaultProviderResolver: DefaultProviderResolver) => {
+        const providerResolver = (parameter: IParameter, mocked: Type<any>, defaultProviderResolver: DefaultProviderFactory) => {
             if (parameter.optional === true) {
                 return undefined;
             }
             return defaultProviderResolver(parameter, mocked);
         };
 
-        const providers = moqInjectorProviders(MasterServiceWithOptionalDependency, {providerResolver});
+        const providers = moqInjectorProviders(MasterServiceWithOptionalDependency, {providerFactory: providerResolver});
         const injector = Injector.create({providers});
 
         // action section
