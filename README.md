@@ -50,7 +50,7 @@ beforeEach(() => {
   
   //or
   
-  resolveMock<ValueService>(ValueService, TestBed.get(Injector)) 
+  resolveMock(ValueService, TestBed.get(Injector)) 
     .setup(instance => instance.getValue())
     .returns(-1);
 });
@@ -109,7 +109,7 @@ describe("Integration test", () => {
 
         //assertion section
         expect(actual).toBe(-1);
-    });
+    });    
 });
 
 ```
