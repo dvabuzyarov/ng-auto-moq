@@ -32,7 +32,7 @@
     "cpx": "1.5.0",
     "rxjs": "6.6.2",
     "zone.js": "0.11.1",
-    "cz-conventional-changelog": "3.2.0",
+    "cz-conventional-changelog": "3.2.1",
     "husky": "4.2.5",
     "jasmine": "3.6.1",
     "jasmine-core": "3.6.0",
