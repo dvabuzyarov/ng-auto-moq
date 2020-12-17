@@ -25,7 +25,7 @@
     "url": "https://github.com/dvabuzyarov/ng-auto-moq/issues"
   },
   "peerDependencies": {
-    "@angular/core": "^7.1.0 || ^8.0.0 || ^9.0.0",
+    "@angular/core": "^7.1.0 || ^8.0.0 || ^9.0.0 || ^11.0.0",
     "reflect-metadata": "^0.1.12",
     "moq.ts": "^6.0.0"
   },
