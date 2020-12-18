@@ -29,6 +29,9 @@
     "reflect-metadata": "^0.1.12",
     "moq.ts": "^6.0.0"
   },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
   "devDependencies": {
     "jasmine": "3.5.0"
   }
