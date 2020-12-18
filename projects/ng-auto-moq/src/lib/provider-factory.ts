@@ -2,6 +2,5 @@ import { IParameter, OnlyStaticProvider } from "./types";
 
 export type DefaultProviderFactory = typeof providerFactory;
 
-export function providerFactory(parameter: IParameter, mocked: any): OnlyStaticProvider | undefined {
-    return {provide: parameter.token, useValue: mocked};
-}
+export const providerFactory = (parameter: IParameter, mocked: any): OnlyStaticProvider | undefined =>
+    ({provide: parameter.token, useValue: mocked});
