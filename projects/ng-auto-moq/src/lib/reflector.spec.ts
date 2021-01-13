@@ -1,3 +1,4 @@
+/*eslint-disable max-classes-per-file*/
 import { Inject, Injectable, InjectionToken, Optional, Self, SkipSelf } from "@angular/core";
 import { reflector} from "./reflector";
 import { Visibility } from "./types";
