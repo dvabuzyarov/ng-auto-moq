@@ -1,3 +1,4 @@
+/*eslint-disable max-classes-per-file*/
 import "reflect-metadata";
 import { Injectable, Injector, Optional, Type } from "@angular/core";
 import { moqInjectorProviders } from "./moq-injector-providers";

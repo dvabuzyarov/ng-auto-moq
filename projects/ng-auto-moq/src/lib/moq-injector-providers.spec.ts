@@ -1,3 +1,4 @@
+/*eslint-disable max-classes-per-file*/
 import { Injectable, ValueProvider } from "@angular/core";
 import { It, Mock, MoqAPI } from "moq.ts";
 import { moqInjectorProviders } from "./moq-injector-providers";

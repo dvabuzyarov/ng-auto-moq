@@ -36,11 +36,14 @@ export interface IOptions<T> {
 
 export type MoqInjectorProviders = <T>(type: Type<T>, options?: IOptions<any>) => StaticProvider[];
 
+/*eslint-disable @typescript-eslint/naming-convention, no-shadow*/
 export const enum Visibility {
     None,
     Self,
     SkipSelf
 }
+
+/*eslint-enable @typescript-eslint/naming-convention, no-shadow*/
 
 /**
  * Reflects a dependency metadata.

@@ -1,11 +1,12 @@
+/*eslint-disable max-classes-per-file*/
 import { Inject, InjectionToken, Optional, resolveForwardRef, Self, SkipSelf, Type } from "@angular/core";
-import { IParameter} from "./types";
-import { Visibility } from "./types";
+import { IParameter, Visibility } from "./types";
 
-declare var global: any;
+declare let global: any;
 
 /**
  * Provides dependencies metadata of inspected angular class.
+ *
  * @param type The inspected class
  */
 export function reflector<T>(type: Type<T>): IParameter[] {
@@ -28,9 +29,7 @@ function _extractToken(
 
     let visibility: Visibility = Visibility.None;
 
-    for (let i = 0; i < metadata.length; ++i) {
-        const paramMetadata = metadata[i];
-
+    for (const paramMetadata of metadata) {
         if (paramMetadata instanceof Type) {
             token = paramMetadata;
 
@@ -56,7 +55,7 @@ function _extractToken(
 
 function _createDependency(
     token: any, optional: boolean, visibility: Visibility): IParameter {
-    return {displayName: stringify(token), token: token, optional, visibility};
+    return {displayName: stringify(token), token, optional, visibility};
 }
 
 function parameters(type: any): any[][] {
@@ -106,7 +105,7 @@ export function stringify(token: any): string {
     }
 
     if (token == null) {
-        return "" + token;
+        return `${token}`;
     }
 
     if (token.overriddenName) {
@@ -120,7 +119,7 @@ export function stringify(token: any): string {
     const res = token.toString();
 
     if (res == null) {
-        return "" + res;
+        return `${res}`;
     }
 
     const newLineIndex = res.indexOf("\n");
