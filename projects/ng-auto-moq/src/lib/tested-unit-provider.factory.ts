@@ -1,5 +1,5 @@
 import { StaticProvider, Type } from "@angular/core";
-import { InjectionFactory } from "@testdozer/ng-injector-types/public_api";
+import { InjectionFactory } from "@testdozer/ng-injector-types";
 
 export class TestedUnitProviderFactory implements InjectionFactory {
     constructor() {

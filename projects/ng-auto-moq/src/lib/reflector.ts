@@ -1,7 +1,7 @@
 /*eslint-disable max-classes-per-file*/
 import { Inject, InjectionToken, Optional, resolveForwardRef, Self, SkipSelf, Type } from "@angular/core";
 import { IParameter, Visibility } from "./types";
-import { InjectionFactory } from "@testdozer/ng-injector-types/public_api";
+import { InjectionFactory } from "@testdozer/ng-injector-types";
 
 declare let global: any;
 

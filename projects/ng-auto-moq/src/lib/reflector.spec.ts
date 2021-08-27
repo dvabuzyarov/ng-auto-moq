@@ -2,7 +2,7 @@
 import { Inject, Injectable, InjectionToken, Optional, Self, SkipSelf } from "@angular/core";
 import { Visibility } from "./types";
 import { Reflector } from "./reflector";
-import { TypeofInjectionFactory } from "@testdozer/ng-injector-types/public_api";
+import { TypeofInjectionFactory } from "@testdozer/ng-injector-types";
 
 @Injectable()
 class Dependency {
