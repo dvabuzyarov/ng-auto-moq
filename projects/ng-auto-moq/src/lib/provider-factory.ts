@@ -1,6 +1,13 @@
 import { IParameter, OnlyStaticProvider } from "./types";
+import { InjectionFactory } from "@testdozer/ng-injector-types";
 
-export type DefaultProviderFactory = typeof providerFactory;
+export class ProviderFactory implements InjectionFactory {
+    constructor() {
+        return this.factory() as any;
+    }
 
-export const providerFactory = (parameter: IParameter, mocked: any): OnlyStaticProvider | undefined =>
-    ({provide: parameter.token, useValue: mocked});
+    factory() {
+        return (parameter: IParameter, mocked: any): OnlyStaticProvider | undefined =>
+            ({provide: parameter.token, useValue: mocked});
+    }
+}

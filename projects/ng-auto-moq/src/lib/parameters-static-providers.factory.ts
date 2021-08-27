@@ -1,17 +1,30 @@
-import { IParameter, MockFactory, OnlyStaticProvider, ProviderFactory } from "./types";
-import { providerFactory } from "./provider-factory";
-import { mockFactory } from "./mock-factory";
+import { Inject } from "@angular/core";
+import { IParameter, OnlyStaticProvider } from "./types";
+import { ProviderFactory } from "./provider-factory";
+import { InjectionFactory, TypeofInjectionFactory } from "@testdozer/ng-injector-types";
+import { MockFactory } from "./mock-factory";
 
-export function* parametersStaticProviders<T>(
-    parameters: IParameter [],
-    _providerResolver: ProviderFactory = providerFactory,
-    _mockFactory: MockFactory = mockFactory): IterableIterator<OnlyStaticProvider> {
+export class ParametersStaticProviderFactory implements InjectionFactory {
+    constructor(
+        @Inject(ProviderFactory)
+        private readonly providerFactory: TypeofInjectionFactory<ProviderFactory>,
+        @Inject(MockFactory)
+        private readonly mockFactory: TypeofInjectionFactory<MockFactory>) {
+        return this.factory() as any;
+    }
 
-    for (const parameter of parameters) {
-        const mock = _mockFactory(parameter, mockFactory);
-        const staticProvider = _providerResolver(parameter, mock.object(), providerFactory);
-        if (staticProvider !== undefined) {
-            yield staticProvider;
-        }
+    factory() {
+        return <T>(parameters: IParameter []): OnlyStaticProvider[] => {
+            const providers: OnlyStaticProvider[] = [];
+            for (const parameter of parameters) {
+                const mock = this.mockFactory(parameter);
+                const staticProvider = this.providerFactory(parameter, mock.object());
+                if (staticProvider !== undefined) {
+                    providers.push(staticProvider);
+                }
+            }
+
+            return providers;
+        };
     }
 }

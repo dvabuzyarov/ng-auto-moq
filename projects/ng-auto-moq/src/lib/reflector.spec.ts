@@ -1,13 +1,20 @@
 /*eslint-disable max-classes-per-file*/
 import { Inject, Injectable, InjectionToken, Optional, Self, SkipSelf } from "@angular/core";
-import { reflector} from "./reflector";
 import { Visibility } from "./types";
+import { Reflector } from "./reflector";
+import { TypeofInjectionFactory } from "@testdozer/ng-injector-types/public_api";
 
 @Injectable()
 class Dependency {
 }
 
 describe("Reflector", () => {
+    let reflector: TypeofInjectionFactory<Reflector>;
+
+    beforeEach(() => {
+        reflector = new Reflector() as any;
+    });
+
     it("Returns empty array when a component does not have dependencies", () => {
         class EmptyResolvable {
         }

@@ -26,11 +26,14 @@
   },
   "peerDependencies": {
     "@angular/core": "*",
-    "reflect-metadata": "*",
     "moq.ts": "*",
     "tslib": "^2.0.3"
   },
+  "optionalDependencies": {
+    "@testdozer/ng-injector-types": "*"
+  },
   "devDependencies": {
-    "jasmine": "*"
+    "jasmine": "*",
+    "core-js": "*"
   }
 }
