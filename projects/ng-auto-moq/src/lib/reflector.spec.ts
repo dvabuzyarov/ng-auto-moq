@@ -3,6 +3,7 @@ import { Inject, Injectable, InjectionToken, Optional, Self, SkipSelf } from "@a
 import { Visibility } from "./types";
 import { Reflector } from "./reflector";
 import { TypeofInjectionFactory } from "@testdozer/ng-injector-types";
+import { TokenNameProvider } from "./token-name.provider";
 
 @Injectable()
 class Dependency {
@@ -12,7 +13,7 @@ describe("Reflector", () => {
     let reflector: TypeofInjectionFactory<Reflector>;
 
     beforeEach(() => {
-        reflector = new Reflector() as any;
+        reflector = new Reflector(new TokenNameProvider()) as any;
     });
 
     it("Returns empty array when a component does not have dependencies", () => {

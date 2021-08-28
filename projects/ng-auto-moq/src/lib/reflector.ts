@@ -1,7 +1,7 @@
-/*eslint-disable max-classes-per-file*/
 import { Inject, InjectionToken, Optional, resolveForwardRef, Self, SkipSelf, Type } from "@angular/core";
 import { IParameter, Visibility } from "./types";
 import { InjectionFactory } from "@testdozer/ng-injector-types";
+import { TokenNameProvider } from "./token-name.provider";
 
 declare let global: any;
 
@@ -11,7 +11,7 @@ declare let global: any;
  * @param type The inspected class
  */
 export class Reflector implements InjectionFactory {
-    constructor() {
+    constructor(private readonly tokenName: TokenNameProvider) {
         return this.factory() as any;
     }
 
@@ -98,39 +98,9 @@ export class Reflector implements InjectionFactory {
     }
 
     private createDependency(token: any, optional: boolean, visibility: Visibility): IParameter {
-        return {displayName: this.stringify(token), token, optional, visibility};
+        return {displayName: this.tokenName.getName(token), token, optional, visibility};
     }
 
-    private stringify(token: any): string {
-        if (typeof token === "string") {
-            return token;
-        }
-
-        if (token instanceof Array) {
-            return `[${token.map(this.stringify).join(", ")}]`;
-        }
-
-        if (token == null) {
-            return `${token}`;
-        }
-
-        if (token.overriddenName) {
-            return `${token.overriddenName}`;
-        }
-
-        if (token.name) {
-            return `${token.name}`;
-        }
-
-        const res = token.toString();
-
-        if (res == null) {
-            return `${res}`;
-        }
-
-        const newLineIndex = res.indexOf("\n");
-        return newLineIndex === -1 ? res : res.substring(0, newLineIndex);
-    }
 }
 
 

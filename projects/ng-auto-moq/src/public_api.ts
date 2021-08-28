@@ -11,3 +11,4 @@ export * from "./lib/mock-factory";
 export * from "./lib/moq-injector-providers";
 export * from "./lib/parameters-static-providers.factory";
 export * from "./lib/tested-unit-provider.factory";
+export * from "./lib/token-name.provider";

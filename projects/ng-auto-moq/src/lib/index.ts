@@ -8,6 +8,7 @@ import { ParametersStaticProviderFactory } from "./parameters-static-providers.f
 import { ProviderFactory } from "./provider-factory";
 import { MockFactory } from "./mock-factory";
 import { OnlyStaticProvider } from "./types";
+import { TokenNameProvider } from "./token-name.provider";
 
 /**
  * Provides the service-to-test and its (moq) dependencies
@@ -25,7 +26,8 @@ export const moqInjectorProvidersFactory = (options: { providers?: OnlyStaticPro
             {provide: ProviderFactory, useClass: ProviderFactory, deps: []},
             {provide: ParametersStaticProviderFactory, useClass: ParametersStaticProviderFactory, deps: [ProviderFactory, MockFactory]},
             {provide: MockFactory, useClass: MockFactory, deps: []},
-            {provide: Reflector, useClass: Reflector, deps: []},
+            {provide: Reflector, useClass: Reflector, deps: [TokenNameProvider]},
+            {provide: TokenNameProvider, useClass: TokenNameProvider, deps: []},
             ...(options.providers || [])
         ]
     });
