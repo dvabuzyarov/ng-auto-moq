@@ -1,11 +1,10 @@
 /*eslint-disable max-classes-per-file*/
-import "reflect-metadata";
-import { Injectable, Injector, Optional, Type } from "@angular/core";
-import { moqInjectorProviders } from "./moq-injector-providers";
+import { Injectable, InjectionToken, Injector, Optional, Type } from "@angular/core";
 import { resolveMock } from "./resolveMock";
 import { It } from "moq.ts";
 import { IParameter } from "./types";
-import { DefaultProviderFactory } from "./provider-factory";
+import { moqInjectorProvidersFactory } from "./index";
+import { ProviderFactory } from "./provider-factory";
 
 @Injectable()
 export class ValueService {
@@ -36,10 +35,10 @@ export class MasterServiceWithOptionalDependency {
 
 describe("Integration test", () => {
     it("Returns provided value", () => {
+        const moqInjectorProviders = moqInjectorProvidersFactory();
         const providers = moqInjectorProviders(MasterService);
         const injector = Injector.create({providers});
 
-        // setup section
         resolveMock(ValueService, injector)
             // the options object should be compared with deep equal logic or any other custom logic
             // the default comparision would not work since for objects it uses reference comparing
@@ -50,27 +49,31 @@ describe("Integration test", () => {
         const tested = injector.get(MasterService);
         const actual = tested.getValue(1);
 
-        // assertion section
         expect(actual).toBe(-1);
     });
 
     it("Returns provided value with ignored optional", () => {
-        // setup section
-        const providerResolver = (parameter: IParameter, mocked: Type<any>, defaultProviderResolver: DefaultProviderFactory) => {
-            if (parameter.optional === true) {
-                return undefined;
-            }
-            return defaultProviderResolver(parameter, mocked);
-        };
+        const providerFactoryToken = new InjectionToken("ProviderFactory");
+        const providerResolver = (defaultProviderResolver) => (parameter: IParameter, mocked: Type<any>) => {
+                if (parameter.optional === true) {
+                    return undefined;
+                }
+                return defaultProviderResolver(parameter, mocked);
+            };
 
-        const providers = moqInjectorProviders(MasterServiceWithOptionalDependency, {providerFactory: providerResolver});
+        const moqInjectorProviders = moqInjectorProvidersFactory({
+            providers: [
+                {provide: providerFactoryToken, useClass: ProviderFactory, deps: []},
+                {provide: ProviderFactory, useFactory: providerResolver, deps: [providerFactoryToken]},
+            ]
+        });
+        const providers = moqInjectorProviders(MasterServiceWithOptionalDependency);
         const injector = Injector.create({providers});
 
-        // action section
         const tested = injector.get(MasterServiceWithOptionalDependency);
         const actual = tested.getValue(1);
 
-        // assertion section
         expect(actual).toBe(-1000);
     });
-});
+})
+;

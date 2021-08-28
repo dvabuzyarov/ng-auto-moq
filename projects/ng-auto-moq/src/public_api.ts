@@ -2,8 +2,13 @@
  * Public API Surface of ng-auto-moq
  */
 
-export { DefaultProviderFactory } from "./lib/provider-factory";
-export { DefaultMockFactory } from "./lib/mock-factory";
-export * from "./lib/moq-injector-providers";
+export * from "./lib/index";
 export * from "./lib/types";
+export * from "./lib/reflector";
 export * from "./lib/resolveMock";
+export * from "./lib/deps-factory";
+export * from "./lib/mock-factory";
+export * from "./lib/moq-injector-providers";
+export * from "./lib/parameters-static-providers.factory";
+export * from "./lib/tested-unit-provider.factory";
+export * from "./lib/token-name.provider";

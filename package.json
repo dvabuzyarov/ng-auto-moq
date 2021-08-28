@@ -5,8 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build ng-auto-moq --configuration production && cpx README.md ./dist/ng-auto-moq/",
-    "build-tests": "tsc -p ./projects/ng-auto-moq/tsconfig.spec.json ",
-    "test": "npm run build-tests && node ./out-tsc/**/index.specs.js",
+    "tests:build": "tsc -p ./projects/ng-auto-moq/tsconfig.spec.json ",
+    "test": "npm run tests:build && node ./out-tsc/**/index.specs.js",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "commit": "git-cz",
@@ -51,7 +51,9 @@
     "semantic-release": "17.3.2",
     "ts-node": "9.1.1",
     "typescript": "4.3.5",
-    "tslib": "2.1.0"
+    "tslib": "2.1.0",
+    "core-js": "3.16.3",
+    "@testdozer/ng-injector-types": "1.0.2"
   },
   "release": {
     "branches": [
