@@ -13,6 +13,9 @@
     "commit-retry": "git cz --retry"
   },
   "private": true,
+  "_moduleAliases": {
+    "ng-auto-moq": "out-tsc/spec/src/public_api.js"
+  },
   "devDependencies": {
     "@angular-devkit/architect": "0.1202.1",
     "@angular-devkit/build-angular": "12.2.1",
@@ -53,7 +56,8 @@
     "typescript": "4.3.5",
     "tslib": "2.1.0",
     "core-js": "3.16.3",
-    "@testdozer/ng-injector-types": "1.0.2"
+    "@testdozer/ng-injector-types": "1.0.2",
+    "module-alias": "2.2.2"
   },
   "release": {
     "branches": [
