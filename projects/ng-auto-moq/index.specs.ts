@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable @typescript-eslint/no-require-imports */
 /* eslint-disable @typescript-eslint/naming-convention */
+require("module-alias/register");
 const Jasmine = require("jasmine");
 /* eslint-enable @typescript-eslint/naming-convention */
 /* eslint-enable @typescript-eslint/no-require-imports */

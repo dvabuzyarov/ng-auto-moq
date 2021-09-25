@@ -13,6 +13,7 @@ describe("Moq injector providers", () => {
     beforeEach(() => {
         createMoqInjector(MoqInjectorProviders);
     });
+
     it("Returns a single static provider for a component without dependencies", () => {
         const parameters = [];
         const dependencies = [];

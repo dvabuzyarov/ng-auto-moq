@@ -203,3 +203,47 @@ it("Throws an exception", () => {
     expect(() => tested.getValue()).toThrow();
 })
 ```
+#### Jest & tsickle support
+
+With [jest-preset-angular](https://github.com/thymikee/jest-preset-angular/blob/ac9b689d9ba18b5ae2e18e9ed083d2cbbf86b2fd/src/transformers/downlevel-ctor.ts) or [tsickle](https://github.com/angular/tsickle)
+decorators are removed from the compiled code. The libraries like [reflect-metadata](https://www.npmjs.com/package/reflect-metadata) or [core-js/proposals/reflect-metadata](https://www.npmjs.com/package/core-js)
+could not return metadata that describes unit dependencies. Fortunately, it is saved in a static property called ctorParameters.
+The library provides a build in solution:
+
+```typescript
+import "reflect-metadata";
+import { MockFactory, IParameter } from "ng-auto-moq";
+import { moqInjectorProvidersFactory } from "ng-auto-moq/jest";
+import { It } from "moq.ts";
+import { InjectionToken } from "@angular/core";
+
+let injector: Injector;
+
+beforeEach(() => {
+    const mockFactory = (defaultMockFactory) => {
+        (parameter: IParameter) => {
+            return defaultMockFactory(parameter)
+                .setup(() => It.IsAny())
+                .throws(new Error("setup is missed"));
+        };
+    };
+    const defaultMockFactoryToken = new InjectionToken("DefaultMockFactory");
+    const moqInjectorProviders = moqInjectorProvidersFactory({
+        providers: [
+            // re-register the MockFactory under a new token
+            {provide: defaultMockFactoryToken, useClass: MockFactory, deps: []},
+            // override the MockFactory token
+            {provide: MockFactory, useFactory: mockFactory, deps: [defaultMockFactoryToken]},
+        ]
+    });
+    injector = Injector.create(moqInjectorProviders(MasterService));
+});
+
+it("Throws an exception", () => {
+    //action section
+    const tested = injector.get(MasterService);
+
+    //assertion section
+    expect(() => tested.getValue()).toThrow();
+})
+```

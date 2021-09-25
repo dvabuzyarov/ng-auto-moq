@@ -1,6 +1,6 @@
 import { Inject, InjectionToken, Optional, resolveForwardRef, Self, SkipSelf, Type } from "@angular/core";
 import { IParameter, Visibility } from "./types";
-import { InjectionFactory } from "@testdozer/ng-injector-types";
+import { InjectionFactory, TypeofInjectionFactory } from "@testdozer/ng-injector-types";
 import { TokenNameProvider } from "./token-name.provider";
 
 declare let global: any;
@@ -11,7 +11,9 @@ declare let global: any;
  * @param type The inspected class
  */
 export class Reflector implements InjectionFactory {
-    constructor(private readonly tokenName: TokenNameProvider) {
+    constructor(
+        @Inject(TokenNameProvider)
+        private readonly tokenName: TokenNameProvider) {
         return this.factory() as any;
     }
 

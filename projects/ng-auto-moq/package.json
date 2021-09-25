@@ -34,6 +34,7 @@
   },
   "devDependencies": {
     "jasmine": "*",
-    "core-js": "*"
+    "core-js": "*",
+    "module-alias": "*"
   }
 }

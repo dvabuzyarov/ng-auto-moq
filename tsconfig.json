@@ -21,10 +21,7 @@
     ],
     "paths": {
       "ng-auto-moq": [
-        "dist/ng-auto-moq"
-      ],
-      "ng-auto-moq/*": [
-        "dist/ng-auto-moq/*"
+        "projects/ng-auto-moq/src/public_api"
       ]
     }
   }
