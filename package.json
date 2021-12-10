@@ -17,7 +17,7 @@
     "ng-auto-moq": "out-tsc/spec/src/public_api.js"
   },
   "devDependencies": {
-    "@angular-devkit/architect": "0.1301.0",
+    "@angular-devkit/architect": "0.1301.1",
     "@angular-devkit/build-angular": "12.2.14",
     "@angular-devkit/core": "12.2.14",
     "@angular-eslint/builder": "13.0.1",
