@@ -16,6 +16,11 @@ export interface IOptions {
      * Only providers for the moq dependencies will be returned.
      */
     skipSelf?: boolean;
+    /**
+     * When true the static providers for optional dependencies are skipped.
+     * The tested unit will receive null value.
+     */
+    skipOptional?: boolean;
 }
 
 

@@ -21,10 +21,13 @@ export class MoqInjectorProviders implements InjectionFactory {
     }
 
     factory() {
-        return <T>(type: Type<T>, options: IOptions = {skipSelf: false}): StaticProvider[] => {
+        return <T>(type: Type<T>, options: IOptions = {skipSelf: false, skipOptional: false}): StaticProvider[] => {
             const parameters = this.reflector(type);
             const provider = this.testedUnitProviderFactory(type, this.depsFactory(parameters));
-            const providers = Array.from(this.parametersStaticProviderFactory(parameters));
+            const onlyRequiredParameters = options.skipOptional
+                ? parameters.filter(({optional}) => optional === false)
+                : parameters;
+            const providers = Array.from(this.parametersStaticProviderFactory(onlyRequiredParameters));
             return options?.skipSelf ? providers : [provider, ...providers];
         };
     }
