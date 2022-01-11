@@ -42,7 +42,7 @@
     "eslint-plugin-import": "2.25.4",
     "eslint-plugin-jsdoc": "37.6.1",
     "eslint-plugin-prefer-arrow": "1.2.3",
-    "rxjs": "7.5.1",
+    "rxjs": "7.5.2",
     "zone.js": "0.11.4",
     "cz-conventional-changelog": "3.3.0",
     "husky": "7.0.4",
