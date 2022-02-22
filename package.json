@@ -47,7 +47,7 @@
     "cz-conventional-changelog": "3.3.0",
     "husky": "7.0.4",
     "jasmine": "4.0.2",
-    "jasmine-core": "4.0.0",
+    "jasmine-core": "4.0.1",
     "jasmine-spec-reporter": "7.0.0",
     "moq.ts": "7.3.4",
     "ng-packagr": "12.2.7",
