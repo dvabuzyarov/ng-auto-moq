@@ -5,6 +5,7 @@
   "license": "MIT",
   "readme": "README.md",
   "description": "Unit tests reflector that automatically mocks dependencies with moq.ts for angular units",
+  "type": "module",
   "publishConfig": {
     "access": "public"
   },
