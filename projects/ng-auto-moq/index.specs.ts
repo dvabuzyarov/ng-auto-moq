@@ -14,7 +14,7 @@ runner.configureDefaultReporter({
 
 runner.loadConfig({
     /* eslint-disable @typescript-eslint/naming-convention */
-    spec_dir: "./out-tsc",
+    spec_dir: "./specs/ng-auto-moq",
     spec_files: [
         "**/*.[sS]pec.js"
     ]

@@ -1,13 +1,23 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../out-tsc/spec",
+    "incremental": true,
+    "outDir": "../../specs/ng-auto-moq",
     "types": [
       "jasmine",
       "node"
     ],
     "plugins": [
-      { "transform": "../../spec:build.transformer.ts", "after": true }
+      {
+        "transform": "ts-transform-esm-import",
+        "after": true,
+        "afterDeclarations": true,
+        "type": "config",
+
+        "rootDir": "./projects/ng-auto-moq",
+        "outDir": "../../specs/ng-auto-moq",
+        "resolvers": [{ "dir": "./projects/ng-auto-moq", "sourceDir": true }]
+      }
     ]
   },
   "include": [
