@@ -13,7 +13,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "commit": "git-cz",
-    "commit-retry": "git cz --retry"
+    "commit-retry": "git cz --retry",
+    "prepare": "husky install"
   },
   "private": true,
   "aliases": {
@@ -87,11 +88,5 @@
     "extends": [
       "@commitlint/config-conventional"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint && npm run test",
-      "commit-msg": "commitlint --edit"
-    }
   }
 }
