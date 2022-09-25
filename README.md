@@ -1,13 +1,16 @@
-[![Build Status](https://travis-ci.org/dvabuzyarov/ng-auto-moq.svg?branch=master)](https://travis-ci.org/dvabuzyarov/ng-auto-moq)
+[![Build Status](https://github.com/dvabuzyarov/ng-auto-moq/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/dvabuzyarov/ng-auto-moq/)
 [![NPM version:latest](https://img.shields.io/npm/v/ng-auto-moq/latest.svg?style=flat-square)](https://www.npmjs.com/package/ng-auto-moq)
 [![NPM version:next](https://img.shields.io/npm/v/ng-auto-moq/next.svg?style=flat-square)](https://www.npmjs.com/package/ng-auto-moq)
 [![npm downloads](https://img.shields.io/npm/dt/ng-auto-moq.svg?style=flat-square)](https://www.npmjs.com/package/ng-auto-moq)
-[![Dependency Status](http://img.shields.io/david/dvabuzyarov/ng-auto-moq.svg?style=flat-square)](https://david-dm.org/dvabuzyarov/ng-auto-moq)
+[![Code Coverage](https://img.shields.io/nycrc/dvabuzyarov/ng-auto-moq)](https://github.com/dvabuzyarov/ng-auto-moq/)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 [![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com/)
 [![npm bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/ng-auto-moq.svg)](https://www.npmjs.com/package/ng-auto-moq)
 [![License](https://img.shields.io/npm/l/ng-auto-moq.svg)](https://www.npmjs.com/package/ng-auto-moq)
+
+> :warning: **[Starting with the 6 version the package follows new standard of APF.](https://angular.io/guide/angular-package-format)**
+> Which introduced support of ES modules and drops commonjs.
 
 This is a special angular injector builder for unit testing purposes. It creates an injector configuration that
 automatically mocks all dependencies of tested unit with [moq.ts](https://github.com/dvabuzyarov/moq.ts).
@@ -17,6 +20,8 @@ regular [injector](https://angular.io/api/core/Injector).
 
 Here is adapted test configuration example
 from [the official angular documentation.](https://angular.io/guide/testing#service-tests)
+
+
 
 ```typescript
 import "core-js/proposals/reflect-metadata";

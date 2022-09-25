@@ -5,6 +5,7 @@
   "license": "MIT",
   "readme": "README.md",
   "description": "Unit tests reflector that automatically mocks dependencies with moq.ts for angular units",
+  "type": "module",
   "publishConfig": {
     "access": "public"
   },
@@ -24,10 +25,12 @@
   "bugs": {
     "url": "https://github.com/dvabuzyarov/ng-auto-moq/issues"
   },
+  "dependencies": {
+    "tslib": "^2.0.3"
+  },
   "peerDependencies": {
     "@angular/core": "*",
-    "moq.ts": "*",
-    "tslib": "^2.0.3"
+    "moq.ts": "*"
   },
   "optionalDependencies": {
     "@testdozer/ng-injector-types": "*"
@@ -35,6 +38,7 @@
   "devDependencies": {
     "jasmine": "*",
     "core-js": "*",
-    "module-alias": "*"
+    "esm-module-alias": "*",
+    "@angular/compiler": "*"
   }
 }

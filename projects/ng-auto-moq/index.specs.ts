@@ -1,12 +1,6 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-/* eslint-disable @typescript-eslint/no-require-imports */
-/* eslint-disable @typescript-eslint/naming-convention */
-require("module-alias/register");
-const Jasmine = require("jasmine");
-/* eslint-enable @typescript-eslint/naming-convention */
-/* eslint-enable @typescript-eslint/no-require-imports */
-/* eslint-enable @typescript-eslint/no-var-requires */
-import "core-js/proposals/reflect-metadata";
+import Jasmine from "jasmine";
+import "core-js/proposals/reflect-metadata.js";
+import "@angular/compiler";
 
 const runner = new Jasmine({}) as any;
 runner.configureDefaultReporter({
@@ -20,7 +14,7 @@ runner.configureDefaultReporter({
 
 runner.loadConfig({
     /* eslint-disable @typescript-eslint/naming-convention */
-    spec_dir: "./out-tsc",
+    spec_dir: "./specs/ng-auto-moq",
     spec_files: [
         "**/*.[sS]pec.js"
     ]

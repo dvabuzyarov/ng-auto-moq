@@ -1,8 +1,6 @@
 import { InjectionToken, Injector, StaticProvider, Type } from "@angular/core";
 import { IMock, Mock, MoqAPI } from "moq.ts";
-import { IOptions, IParameter } from "../lib/types";
-import { moqInjectorProvidersFactory } from "../lib";
-import { MockFactory } from "../lib/mock-factory";
+import { IOptions, IParameter, MockFactory, moqInjectorProvidersFactory } from "ng-auto-moq";
 import { InjectionFactory, TypeofInjectionFactory } from "@testdozer/ng-injector-types";
 import { nameof } from "./nameof";
 
