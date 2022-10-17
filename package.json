@@ -49,7 +49,7 @@
     "esbuild": "0.15.11",
     "eslint": "8.25.0",
     "eslint-plugin-import": "2.26.0",
-    "eslint-plugin-jsdoc": "39.3.6",
+    "eslint-plugin-jsdoc": "39.3.13",
     "eslint-plugin-prefer-arrow": "1.2.3",
     "esm-module-alias": "2.0.1",
     "husky": "8.0.1",
