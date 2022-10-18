@@ -36,9 +36,9 @@
     "@testdozer/ng-injector-types": "*"
   },
   "devDependencies": {
-    "jasmine": "*",
-    "core-js": "*",
-    "esm-module-alias": "*",
-    "@angular/compiler": "*"
+    "jasmine": "4.4.0",
+    "core-js": "3.25.5",
+    "esm-module-alias": "2.0.1",
+    "@angular/compiler": "14.2.6"
   }
 }
