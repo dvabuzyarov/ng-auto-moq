@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "jasmine": "4.4.0",
-    "core-js": "3.25.5",
+    "core-js": "3.26.0",
     "esm-module-alias": "2.0.1",
     "@angular/compiler": "14.2.7"
   }
