@@ -39,6 +39,6 @@
     "jasmine": "4.5.0",
     "core-js": "3.26.1",
     "esm-module-alias": "2.0.2",
-    "@angular/compiler": "14.2.11"
+    "@angular/compiler": "14.2.12"
   }
 }
