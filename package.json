@@ -39,7 +39,7 @@
     "@testdozer/ng-injector-types": "1.0.2",
     "@types/jasmine": "3.6.2",
     "@types/jasminewd2": "2.0.10",
-    "@types/node": "18.11.17",
+    "@types/node": "18.11.18",
     "@typescript-eslint/eslint-plugin": "5.47.0",
     "@typescript-eslint/parser": "5.47.0",
     "c8": "7.12.0",
