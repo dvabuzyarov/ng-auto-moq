@@ -57,7 +57,7 @@
     "jasmine-core": "4.5.0",
     "jasmine-spec-reporter": "7.0.0",
     "moq.ts": "10.0.2",
-    "ng-packagr": "14.2.2",
+    "ng-packagr": "15.2.2",
     "rxjs": "7.8.0",
     "semantic-release": "19.0.5",
     "ts-node": "10.9.1",
