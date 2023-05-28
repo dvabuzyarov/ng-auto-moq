@@ -51,7 +51,7 @@
     "eslint-plugin-import": "2.26.0",
     "eslint-plugin-jsdoc": "39.6.4",
     "eslint-plugin-prefer-arrow": "1.2.3",
-    "esm-module-alias": "2.0.2",
+    "esm-module-alias": "2.0.3",
     "husky": "8.0.3",
     "jasmine": "4.5.0",
     "jasmine-core": "4.5.0",
