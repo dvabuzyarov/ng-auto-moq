@@ -3,7 +3,7 @@ import { IMock, MoqAPI } from "moq.ts";
 
 /**
  * Gets an instance of IMock interface for mocked object according to provided token.
- * Injector should be built with {@link moqInjectorProviders}.
+ * Injector should be built with {@link moqInjectorProvidersFactory}.
  *
  * @param token angular token
  * @param injector angular injector
