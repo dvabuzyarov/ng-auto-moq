@@ -21,14 +21,14 @@
     "ng-auto-moq": "specs/ng-auto-moq/src/public_api.js"
   },
   "devDependencies": {
-    "@angular-devkit/architect": "0.1500.5",
-    "@angular-devkit/build-angular": "14.2.10",
-    "@angular-devkit/core": "14.2.10",
+    "@angular-devkit/architect": "0.1602.1",
+    "@angular-devkit/build-angular": "14.2.12",
+    "@angular-devkit/core": "14.2.12",
     "@angular-eslint/builder": "15.1.0",
     "@angular-eslint/eslint-plugin": "15.1.0",
     "@angular-eslint/eslint-plugin-template": "15.1.0",
     "@angular-eslint/template-parser": "15.1.0",
-    "@angular/cli": "14.2.10",
+    "@angular/cli": "14.2.12",
     "@angular/common": "14.2.12",
     "@angular/compiler": "14.2.12",
     "@angular/compiler-cli": "14.2.12",
