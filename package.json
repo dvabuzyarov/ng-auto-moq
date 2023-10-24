@@ -53,7 +53,7 @@
     "eslint-plugin-prefer-arrow": "1.2.3",
     "esm-module-alias": "2.0.3",
     "husky": "8.0.3",
-    "jasmine": "4.5.0",
+    "jasmine": "4.6.0",
     "jasmine-core": "4.6.0",
     "jasmine-spec-reporter": "7.0.0",
     "moq.ts": "10.0.8",
