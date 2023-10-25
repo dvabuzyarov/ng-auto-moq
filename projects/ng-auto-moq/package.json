@@ -26,7 +26,7 @@
     "url": "https://github.com/dvabuzyarov/ng-auto-moq/issues"
   },
   "dependencies": {
-    "tslib": "2.4.1"
+    "tslib": "2.6.2"
   },
   "peerDependencies": {
     "@angular/core": "*",
