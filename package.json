@@ -38,7 +38,7 @@
     "@commitlint/config-conventional": "17.8.1",
     "@testdozer/ng-injector-types": "1.0.2",
     "@types/jasmine": "3.6.2",
-    "@types/jasminewd2": "2.0.12",
+    "@types/jasminewd2": "2.0.13",
     "@types/node": "18.18.6",
     "@typescript-eslint/eslint-plugin": "5.62.0",
     "@typescript-eslint/parser": "5.62.0",
