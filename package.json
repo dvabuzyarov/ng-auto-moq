@@ -54,7 +54,7 @@
     "esm-module-alias": "2.1.0",
     "husky": "8.0.3",
     "jasmine": "4.6.0",
-    "jasmine-core": "4.6.0",
+    "jasmine-core": "4.6.1",
     "jasmine-spec-reporter": "7.0.0",
     "moq.ts": "10.0.8",
     "ng-packagr": "14.2.2",
